@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-import _pickle as cPickle
 from novelspider import novelSpider
+import output
 
 # path to chromeDriver
 path_to_chrome_driver = r'C:/ProgramFiles/chromedriver/chromedriver.exe'
@@ -15,9 +15,9 @@ novelSpider.init_driver(path_to_chrome_driver, headless)
 # 爬取
 r = novelSpider.search_one_novel(start_url=start_url)
 
-# 处理
-with open('./r.pkl', 'wb') as pkl_file:
-    cPickle.dump(r, pkl_file)
+# 输出(从下面几种输出方法中选择一个)
+# output.output_to_pkl(r)
+output.output_to_txt(r)
 
 # 释放浏览器driver
 novelSpider.close_driver()
